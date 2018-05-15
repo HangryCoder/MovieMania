@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">MovieMania</string>
     <string name="watch_trailer">Watch Trailer</string>
+    <string name="loading_message">Loading, Please wait...</string>
 </resources>
