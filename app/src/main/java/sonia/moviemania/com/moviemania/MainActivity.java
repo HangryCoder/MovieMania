@@ -10,6 +10,7 @@ import butterknife.ButterKnife;
 import sonia.moviemania.com.moviemania.data.Movie;
 import sonia.moviemania.com.moviemania.data.MovieDataSource;
 import sonia.moviemania.com.moviemania.data.MovieRespository;
+import sonia.moviemania.com.moviemania.utils.Utils;
 
 public class MainActivity extends AppCompatActivity implements MovieContract.View {
 
@@ -67,5 +68,13 @@ public class MainActivity extends AppCompatActivity implements MovieContract.Vie
         movieDurationTV.setText(movie.getMovieDuration());
         movieDescriptionTV.setText(movie.getMovieDescription());
 
+    }
+
+    @Override
+    public void displayError(String error) {
+        if (progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
+        Utils.myToast(getApplicationContext(), "Error " + error);
     }
 }

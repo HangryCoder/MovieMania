@@ -7,7 +7,7 @@ package sonia.moviemania.com.moviemania.data;
 public interface MovieDataSource {
 
     interface OnFinishedListener{
-        void onFinished(Movie movie);
+        void onSuccess(Movie movie);
 
         void onError(String error);
     }

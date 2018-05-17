@@ -32,7 +32,7 @@ public class MoviePresenter implements MovieContract.Presenter, MovieDataSource.
     }
 
     @Override
-    public void onFinished(Movie movie) {
+    public void onSuccess(Movie movie) {
         if (movieView != null) {
             movieView.hideProgress();
             movieView.displayMovieData(movie);
@@ -41,6 +41,6 @@ public class MoviePresenter implements MovieContract.Presenter, MovieDataSource.
 
     @Override
     public void onError(String error) {
-
+        movieView.displayError(error);
     }
 }

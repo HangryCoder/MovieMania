@@ -43,7 +43,7 @@ public class MovieRespository implements MovieDataSource {
             @Override
             public void onNext(Movie movie) {
                 Utils.myLog(TAG, "onNext " + movie.getMovieName());
-                onFinishedListener.onFinished(movie);
+                onFinishedListener.onSuccess(movie);
             }
 
             @Override

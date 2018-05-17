@@ -8,7 +8,7 @@ import sonia.moviemania.com.moviemania.data.Movie;
 
 public interface MovieContract {
 
-    interface View{
+    interface View {
 
         void showProgress();
 
@@ -16,10 +16,10 @@ public interface MovieContract {
 
         void displayMovieData(Movie movie);
 
-       // void displayError(String error);
+        void displayError(String error);
     }
 
-    interface Presenter{
+    interface Presenter {
 
         void fetchMovieData();
 
