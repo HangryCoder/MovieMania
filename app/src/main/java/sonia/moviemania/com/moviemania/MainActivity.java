@@ -3,7 +3,12 @@ package sonia.moviemania.com.moviemania;
 import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements MovieContract.Vie
     TextView movieDurationTV;
     @BindView(R.id.movieDescriptionTV)
     TextView movieDescriptionTV;
+    @BindView(R.id.backgroundImage)
+    ImageView backgroundImage;
 
     private MoviePresenter moviePresenter;
     private ProgressDialog progressDialog;
@@ -68,6 +75,12 @@ public class MainActivity extends AppCompatActivity implements MovieContract.Vie
         movieDurationTV.setText(movie.getMovieDuration());
         movieDescriptionTV.setText(movie.getMovieDescription());
 
+        ArrayList<String> moviePostersBasedOnResolution = movie.getMoviePoster();
+        if (moviePostersBasedOnResolution.size() > 0) {
+            Glide.with(this)
+                    .load(moviePostersBasedOnResolution.get(2))
+                    .into(backgroundImage);
+        }
     }
 
     @Override

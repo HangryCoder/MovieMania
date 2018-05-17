@@ -17,17 +17,6 @@ public class MovieRespository implements MovieDataSource {
 
     @Override
     public void getMovieData(final OnFinishedListener onFinishedListener) {
-        /*new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Movie movie = new Movie("Harry Potter", "9.7",
-                        "Adventure", "Year 2007",
-                        "130 Minutes", "Awesome Movie",
-                        "blah blah blah", "Zzzzzzzz");
-                onFinishedListener.onFinished(movie);
-            }
-        }, 1500);*/
-
         getMovieObservable()
                 .subscribeWith(getObserver(onFinishedListener));
     }
