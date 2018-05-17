@@ -77,9 +77,9 @@ public class MainActivity extends AppCompatActivity implements MovieContract.Vie
 
         ArrayList<String> moviePostersBasedOnResolution = movie.getMoviePoster();
         if (moviePostersBasedOnResolution.size() > 0) {
-            Glide.with(this)
-                    .load(moviePostersBasedOnResolution.get(2))
-                    .into(backgroundImage);
+            //Glide.with(this)
+              //      .load(moviePostersBasedOnResolution.get(2))
+               //     .into(backgroundImage);
         }
     }
 
