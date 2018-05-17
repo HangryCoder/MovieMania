@@ -38,4 +38,9 @@ public class MoviePresenter implements MovieContract.Presenter, MovieDataSource.
             movieView.displayMovieData(movie);
         }
     }
+
+    @Override
+    public void onError(String error) {
+
+    }
 }

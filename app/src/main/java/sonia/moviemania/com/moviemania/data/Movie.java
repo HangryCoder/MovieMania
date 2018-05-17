@@ -1,20 +1,37 @@
 package sonia.moviemania.com.moviemania.data;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
+
 /**
  * Created by soniawadji on 15/05/18.
  */
 
 public class Movie {
 
-    private String movieName, movieRatings,
-            movieGenre, movieReleaseDate,
-            movieDuration, movieDescription,
-            movieTrailerUrl, moviePoster;
+    @SerializedName("title")
+    private String movieName;
+    @SerializedName("pgRating")
+    private String movieRatings;
+    @SerializedName("genre")
+    private ArrayList<String> movieGenre;
+    @SerializedName("releaseDate")
+    private String movieReleaseDate;
+    @SerializedName("duration")
+    private String movieDuration;
+    @SerializedName("longDescription")
+    private String movieDescription;
+    @SerializedName("playbackUrl")
+    private String movieTrailerUrl;
+    @SerializedName("potraitPoster")
+    private ArrayList<String> moviePoster;
 
-    public Movie(String movieName, String movieRatings, String movieGenre,
+    public Movie(String movieName, String movieRatings,
+                 ArrayList<String> movieGenre,
                  String movieReleaseDate, String movieDuration,
                  String movieDescription, String movieTrailerUrl,
-                 String moviePoster) {
+                 ArrayList<String> moviePoster) {
         this.movieName = movieName;
         this.movieRatings = movieRatings;
         this.movieGenre = movieGenre;
@@ -41,11 +58,11 @@ public class Movie {
         this.movieRatings = movieRatings;
     }
 
-    public String getMovieGenre() {
+    public ArrayList<String> getMovieGenre() {
         return movieGenre;
     }
 
-    public void setMovieGenre(String movieGenre) {
+    public void setMovieGenre(ArrayList<String> movieGenre) {
         this.movieGenre = movieGenre;
     }
 
@@ -81,11 +98,11 @@ public class Movie {
         this.movieTrailerUrl = movieTrailerUrl;
     }
 
-    public String getMoviePoster() {
+    public ArrayList<String> getMoviePoster() {
         return moviePoster;
     }
 
-    public void setMoviePoster(String moviePoster) {
+    public void setMoviePoster(ArrayList<String> moviePoster) {
         this.moviePoster = moviePoster;
     }
 }

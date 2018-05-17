@@ -8,6 +8,8 @@ public interface MovieDataSource {
 
     interface OnFinishedListener{
         void onFinished(Movie movie);
+
+        void onError(String error);
     }
 
     void getMovieData(OnFinishedListener onFinishedListener);

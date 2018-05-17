@@ -2,11 +2,9 @@ package sonia.moviemania.com.moviemania.network;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Call;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.GET;
-import sonia.moviemania.com.moviemania.data.Movie;
 import sonia.moviemania.com.moviemania.utils.Constants;
 
 /**
@@ -24,6 +22,7 @@ public class RestClient {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(okHttpClient)
                 .build();
 
@@ -33,11 +32,4 @@ public class RestClient {
     public static MovieAPI getMovieAPI() {
         return getRestClient().create(MovieAPI.class);
     }
-
-
-    public interface MovieAPI {
-        @GET(Constants.URL_EXT)
-        Call<Movie> fetchMovieDetails();
-    }
-
 }

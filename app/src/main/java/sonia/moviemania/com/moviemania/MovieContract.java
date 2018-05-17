@@ -15,6 +15,8 @@ public interface MovieContract {
         void hideProgress();
 
         void displayMovieData(Movie movie);
+
+       // void displayError(String error);
     }
 
     interface Presenter{

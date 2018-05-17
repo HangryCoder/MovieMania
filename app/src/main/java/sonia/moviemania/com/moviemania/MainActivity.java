@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements MovieContract.Vie
     public void displayMovieData(Movie movie) {
         movieNameTV.setText(movie.getMovieName());
         movieRatingsTV.setText(movie.getMovieRatings());
-        movieGenreTV.setText(movie.getMovieGenre());
+        movieGenreTV.setText(movie.getMovieGenre().get(0));
         movieReleaseDateTV.setText(movie.getMovieReleaseDate());
         movieDurationTV.setText(movie.getMovieDuration());
         movieDescriptionTV.setText(movie.getMovieDescription());
