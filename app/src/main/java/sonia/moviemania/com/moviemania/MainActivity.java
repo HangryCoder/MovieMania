@@ -1,7 +1,6 @@
 package sonia.moviemania.com.moviemania;
 
 import android.app.ProgressDialog;
-import android.media.Image;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,7 +10,6 @@ import android.widget.TextView;
 import android.widget.VideoView;
 
 import com.bumptech.glide.Glide;
-import com.marcinmoskala.videoplayview.VideoPlayView;
 
 import java.util.ArrayList;
 
@@ -19,7 +17,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import sonia.moviemania.com.moviemania.data.Movie;
-import sonia.moviemania.com.moviemania.data.MovieDataSource;
 import sonia.moviemania.com.moviemania.data.MovieRespository;
 import sonia.moviemania.com.moviemania.utils.Utils;
 
@@ -81,8 +78,15 @@ public class MainActivity extends AppCompatActivity implements MovieContract.Vie
         movieNameTV.setText(movie.getMovieName());
         movieRatingsTV.setText(movie.getMovieRatings());
         movieGenreTV.setText(movie.getMovieGenre().get(0));
-        movieReleaseDateTV.setText(movie.getMovieReleaseDate());
-        movieDurationTV.setText(movie.getMovieDuration());
+        if (movie.getMovieReleaseDate() != null) {
+            String releaseDate = "Year " + movie.getMovieReleaseDate().split("-")[0];
+            movieReleaseDateTV.setText(releaseDate);
+        }
+
+        long movieDurationInLong = Long.parseLong(movie.getMovieDuration()) / (1000 * 60);
+        String movieDurationString = movieDurationInLong + " minutes";
+
+        movieDurationTV.setText(movieDurationString);
         movieDescriptionTV.setText(movie.getMovieDescription());
 
         videoPlayer.setVideoURI(Uri.parse(movie.getMovieTrailerUrl()));
