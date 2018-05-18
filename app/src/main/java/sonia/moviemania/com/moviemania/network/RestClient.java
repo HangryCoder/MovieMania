@@ -11,6 +11,10 @@ import sonia.moviemania.com.moviemania.utils.Constants;
  * Created by soniawadji on 16/05/18.
  */
 
+
+/**
+ * DELETE THIS LATER!!!
+ * */
 public class RestClient {
 
     private static Retrofit getRestClient() {

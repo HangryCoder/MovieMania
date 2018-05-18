@@ -25,10 +25,11 @@ public class MovieRespository implements MovieDataSource {
         MovieComponent movieComponent = DaggerMovieComponent.builder()
                 .build();
 
-        movieComponent.getMovieModule().fetchMovieDetails()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(getObserver(onFinishedListener));
+        DisposableObserver<Movie> disposableObserver =
+                movieComponent.getMovieModule().fetchMovieDetails()
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(getObserver(onFinishedListener));
     }
 
     private Observable<Movie> getMovieObservable() {
