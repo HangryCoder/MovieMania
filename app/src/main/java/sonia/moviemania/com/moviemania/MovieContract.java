@@ -23,9 +23,5 @@ public interface MovieContract {
     interface Presenter {
 
         void fetchMovieData();
-
-        void watchTrailer();
-
-        void pauseTrailer();
     }
 }

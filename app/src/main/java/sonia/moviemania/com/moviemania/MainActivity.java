@@ -1,9 +1,11 @@
 package sonia.moviemania.com.moviemania;
 
 import android.app.ProgressDialog;
+import android.media.Image;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.VideoView;
@@ -35,12 +37,12 @@ public class MainActivity extends AppCompatActivity implements MovieContract.Vie
     TextView movieDurationTV;
     @BindView(R.id.movieDescriptionTV)
     TextView movieDescriptionTV;
-    @BindView(R.id.backgroundImage)
-    ImageView backgroundImage;
     @BindView(R.id.videoPlayer)
     VideoView videoPlayer;
     @BindView(R.id.watchTrailerBtn)
     TextView watchTrailerBtn;
+    @BindView(R.id.movieThumbnail)
+    ImageView movieThumbnail;
 
     private MoviePresenter moviePresenter;
     private ProgressDialog progressDialog;
@@ -85,21 +87,11 @@ public class MainActivity extends AppCompatActivity implements MovieContract.Vie
 
         videoPlayer.setVideoURI(Uri.parse(movie.getMovieTrailerUrl()));
 
-       /* videoPlayer.setVideoUrl(movie.getMovieTrailerUrl());
-        Glide.with(this)
-                .load(movie.getMovieThumbnailLandscape().get(0))
-                .into(videoPlayer.getImageView());
-
-        Glide.with(this)
-                .load(android.R.drawable.ic_media_play)
-                .into(videoPlayer.getPlayView());*/
-
-
-        ArrayList<String> moviePostersBasedOnResolution = movie.getMoviePoster();
+        ArrayList<String> moviePostersBasedOnResolution = movie.getMovieThumbnailLandscape();
         if (moviePostersBasedOnResolution.size() > 0) {
-            //Glide.with(this)
-            //      .load(moviePostersBasedOnResolution.get(2))
-            //     .into(backgroundImage);
+            Glide.with(this)
+                    .load(moviePostersBasedOnResolution.get(0))
+                    .into(movieThumbnail);
         }
     }
 
@@ -115,9 +107,21 @@ public class MainActivity extends AppCompatActivity implements MovieContract.Vie
     public void watchTrailer() {
         if (!videoPlayer.isPlaying()) {
             videoPlayer.start();
+            movieThumbnail.setVisibility(View.INVISIBLE);
             watchTrailerBtn.setText(getResources().getString(R.string.pause_trailer));
         } else {
             videoPlayer.pause();
+            movieThumbnail.setVisibility(View.VISIBLE);
+            watchTrailerBtn.setText(getResources().getString(R.string.watch_trailer));
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (videoPlayer.isPlaying()) {
+            videoPlayer.pause();
+            movieThumbnail.setVisibility(View.VISIBLE);
             watchTrailerBtn.setText(getResources().getString(R.string.watch_trailer));
         }
     }

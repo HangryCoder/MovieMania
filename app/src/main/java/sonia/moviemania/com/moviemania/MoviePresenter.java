@@ -27,16 +27,6 @@ public class MoviePresenter implements MovieContract.Presenter, MovieDataSource.
     }
 
     @Override
-    public void watchTrailer() {
-        //Do this later
-    }
-
-    @Override
-    public void pauseTrailer() {
-
-    }
-
-    @Override
     public void onSuccess(Movie movie) {
         if (movieView != null) {
             movieView.hideProgress();

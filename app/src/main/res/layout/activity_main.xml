@@ -5,17 +5,8 @@
     android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:background="@android:color/black"
     tools:context=".MainActivity">
-
-    <ImageView
-        android:id="@+id/backgroundImage"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/movieNameTV"
@@ -98,14 +89,16 @@
     <TextView
         android:id="@+id/movieDescriptionTV"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:text="Blah Blah Blah Blah"
         android:textColor="@android:color/white"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/movieDurationTV"
-        app:layout_constraintStart_toStartOf="@+id/movieReleaseDateTV" />
+        app:layout_constraintStart_toStartOf="@+id/movieReleaseDateTV"
+        app:layout_constraintTop_toBottomOf="@+id/watchTrailerBtn" />
 
     <VideoView
         android:id="@+id/videoPlayer"
@@ -123,20 +116,29 @@
         android:id="@+id/watchTrailerBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/button_bg"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="18dp"
+        android:paddingBottom="10dp"
+        android:paddingEnd="12dp"
+        android:paddingStart="12dp"
+        android:paddingTop="10dp"
         android:text="@string/watch_trailer"
         android:textAllCaps="true"
         android:textColor="@android:color/white"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/movieDescriptionTV"
+        android:textSize="11sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/videoPlayer" />
+
+    <ImageView
+        android:id="@+id/movieThumbnail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/videoPlayer"
+        app:layout_constraintEnd_toEndOf="@+id/videoPlayer"
+        app:layout_constraintStart_toStartOf="@+id/videoPlayer"
+        app:layout_constraintTop_toTopOf="@+id/videoPlayer" />
 
 </android.support.constraint.ConstraintLayout>
