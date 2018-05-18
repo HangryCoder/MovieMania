@@ -17,6 +17,7 @@ public interface MovieContract {
         void displayMovieData(Movie movie);
 
         void displayError(String error);
+
     }
 
     interface Presenter {
@@ -24,5 +25,7 @@ public interface MovieContract {
         void fetchMovieData();
 
         void watchTrailer();
+
+        void pauseTrailer();
     }
 }

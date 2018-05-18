@@ -1,17 +1,21 @@
 package sonia.moviemania.com.moviemania;
 
 import android.app.ProgressDialog;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.bumptech.glide.Glide;
+import com.marcinmoskala.videoplayview.VideoPlayView;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import sonia.moviemania.com.moviemania.data.Movie;
 import sonia.moviemania.com.moviemania.data.MovieDataSource;
 import sonia.moviemania.com.moviemania.data.MovieRespository;
@@ -33,6 +37,10 @@ public class MainActivity extends AppCompatActivity implements MovieContract.Vie
     TextView movieDescriptionTV;
     @BindView(R.id.backgroundImage)
     ImageView backgroundImage;
+    @BindView(R.id.videoPlayer)
+    VideoView videoPlayer;
+    @BindView(R.id.watchTrailerBtn)
+    TextView watchTrailerBtn;
 
     private MoviePresenter moviePresenter;
     private ProgressDialog progressDialog;
@@ -75,11 +83,23 @@ public class MainActivity extends AppCompatActivity implements MovieContract.Vie
         movieDurationTV.setText(movie.getMovieDuration());
         movieDescriptionTV.setText(movie.getMovieDescription());
 
+        videoPlayer.setVideoURI(Uri.parse(movie.getMovieTrailerUrl()));
+
+       /* videoPlayer.setVideoUrl(movie.getMovieTrailerUrl());
+        Glide.with(this)
+                .load(movie.getMovieThumbnailLandscape().get(0))
+                .into(videoPlayer.getImageView());
+
+        Glide.with(this)
+                .load(android.R.drawable.ic_media_play)
+                .into(videoPlayer.getPlayView());*/
+
+
         ArrayList<String> moviePostersBasedOnResolution = movie.getMoviePoster();
         if (moviePostersBasedOnResolution.size() > 0) {
             //Glide.with(this)
-              //      .load(moviePostersBasedOnResolution.get(2))
-               //     .into(backgroundImage);
+            //      .load(moviePostersBasedOnResolution.get(2))
+            //     .into(backgroundImage);
         }
     }
 
@@ -89,5 +109,16 @@ public class MainActivity extends AppCompatActivity implements MovieContract.Vie
             progressDialog.dismiss();
         }
         Utils.myToast(getApplicationContext(), "Error " + error);
+    }
+
+    @OnClick(R.id.watchTrailerBtn)
+    public void watchTrailer() {
+        if (!videoPlayer.isPlaying()) {
+            videoPlayer.start();
+            watchTrailerBtn.setText(getResources().getString(R.string.pause_trailer));
+        } else {
+            videoPlayer.pause();
+            watchTrailerBtn.setText(getResources().getString(R.string.watch_trailer));
+        }
     }
 }

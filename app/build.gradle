@@ -43,4 +43,6 @@ dependencies {
     //Dagger 2
     implementation 'com.google.dagger:dagger:2.13'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.13'
+    //Custom Video Player
+    implementation 'com.github.marcinmoskala:VideoPlayView:0.0.2'
 }

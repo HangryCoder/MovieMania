@@ -26,12 +26,17 @@ public class Movie {
     private String movieTrailerUrl;
     @SerializedName("potraitPoster")
     private ArrayList<String> moviePoster;
+    @SerializedName("landscapePoster")
+    private ArrayList<String> moviePosterLandscape;
+    @SerializedName("landscapeThumbPoster")
+    private ArrayList<String> movieThumbnailLandscape;
 
-    public Movie(String movieName, String movieRatings,
-                 ArrayList<String> movieGenre,
+    public Movie(String movieName, String movieRatings, ArrayList<String> movieGenre,
                  String movieReleaseDate, String movieDuration,
                  String movieDescription, String movieTrailerUrl,
-                 ArrayList<String> moviePoster) {
+                 ArrayList<String> moviePoster,
+                 ArrayList<String> moviePosterLandscape,
+                 ArrayList<String> movieThumbnailLandscape) {
         this.movieName = movieName;
         this.movieRatings = movieRatings;
         this.movieGenre = movieGenre;
@@ -40,6 +45,24 @@ public class Movie {
         this.movieDescription = movieDescription;
         this.movieTrailerUrl = movieTrailerUrl;
         this.moviePoster = moviePoster;
+        this.moviePosterLandscape = moviePosterLandscape;
+        this.movieThumbnailLandscape = movieThumbnailLandscape;
+    }
+
+    public ArrayList<String> getMoviePosterLandscape() {
+        return moviePosterLandscape;
+    }
+
+    public void setMoviePosterLandscape(ArrayList<String> moviePosterLandscape) {
+        this.moviePosterLandscape = moviePosterLandscape;
+    }
+
+    public ArrayList<String> getMovieThumbnailLandscape() {
+        return movieThumbnailLandscape;
+    }
+
+    public void setMovieThumbnailLandscape(ArrayList<String> movieThumbnailLandscape) {
+        this.movieThumbnailLandscape = movieThumbnailLandscape;
     }
 
     public String getMovieName() {
