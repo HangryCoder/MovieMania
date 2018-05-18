@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.VideoView;
 
@@ -40,9 +42,14 @@ public class MainActivity extends AppCompatActivity implements MovieContract.Vie
     TextView watchTrailerBtn;
     @BindView(R.id.movieThumbnail)
     ImageView movieThumbnail;
+    @BindView(R.id.movieDetailLayout)
+    ScrollView movieDetailLayout;
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
+    @BindView(R.id.errorTV)
+    TextView errorTV;
 
     private MoviePresenter moviePresenter;
-    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,26 +58,21 @@ public class MainActivity extends AppCompatActivity implements MovieContract.Vie
 
         ButterKnife.bind(this);
 
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage(getResources().getString(R.string.loading_message));
-        progressDialog.setCanceledOnTouchOutside(false);
-
         moviePresenter = new MoviePresenter(this, new MovieRespository());
 
         moviePresenter.fetchMovieData();
-
     }
 
     @Override
     public void showProgress() {
-        progressDialog.show();
+        progressBar.setVisibility(View.VISIBLE);
+        movieDetailLayout.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void hideProgress() {
-        if (progressDialog.isShowing()) {
-            progressDialog.dismiss();
-        }
+        progressBar.setVisibility(View.INVISIBLE);
+        movieDetailLayout.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -101,9 +103,9 @@ public class MainActivity extends AppCompatActivity implements MovieContract.Vie
 
     @Override
     public void displayError(String error) {
-        if (progressDialog.isShowing()) {
-            progressDialog.dismiss();
-        }
+        progressBar.setVisibility(View.INVISIBLE);
+        movieDetailLayout.setVisibility(View.INVISIBLE);
+        errorTV.setVisibility(View.VISIBLE);
         Utils.myToast(getApplicationContext(), "Error " + error);
     }
 
