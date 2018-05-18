@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import sonia.moviemania.com.moviemania.network.MovieAPI;
 import sonia.moviemania.com.moviemania.utils.Constants;
 
-@Module
+@Module(includes = OkHttpClientModule.class)
 public class MovieModule {
 
     @Provides
