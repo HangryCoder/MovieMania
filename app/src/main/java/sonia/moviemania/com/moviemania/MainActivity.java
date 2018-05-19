@@ -49,8 +49,6 @@ public class MainActivity extends AppCompatActivity implements MovieContract.Vie
     @BindView(R.id.errorTV)
     TextView errorTV;
 
-    private MoviePresenter moviePresenter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements MovieContract.Vie
 
         ButterKnife.bind(this);
 
-        moviePresenter = new MoviePresenter(this, new MovieRespository());
+        MoviePresenter moviePresenter = new MoviePresenter(this, new MovieRespository());
 
         moviePresenter.fetchMovieData();
     }

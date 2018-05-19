@@ -1,7 +1,5 @@
 package sonia.moviemania.com.moviemania.module;
 
-import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
@@ -19,7 +17,7 @@ public class MovieModule {
         return retrofit.create(MovieAPI.class);
     }
 
-    @Singleton
+    @MovieApplicationScope
     @Provides
     public Retrofit getRetrofit(OkHttpClient okHttpClient) {
 
