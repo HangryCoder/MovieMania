@@ -1,7 +1,8 @@
-package sonia.moviemania.com.moviemania;
+package sonia.moviemania.com.moviemania.moviedetail;
 
 import sonia.moviemania.com.moviemania.data.Movie;
 import sonia.moviemania.com.moviemania.data.MovieDataSource;
+import sonia.moviemania.com.moviemania.moviedetail.MovieContract;
 
 /**
  * Created by soniawadji on 15/05/18.

@@ -1,4 +1,4 @@
-package sonia.moviemania.com.moviemania.module;
+package sonia.moviemania.com.moviemania.di;
 
 import dagger.Module;
 import dagger.Provides;
@@ -6,7 +6,9 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import sonia.moviemania.com.moviemania.network.MovieAPI;
+import sonia.moviemania.com.moviemania.api.MovieAPI;
+import sonia.moviemania.com.moviemania.di.MovieApplicationScope;
+import sonia.moviemania.com.moviemania.di.OkHttpClientModule;
 import sonia.moviemania.com.moviemania.utils.Constants;
 
 @Module(includes = OkHttpClientModule.class)

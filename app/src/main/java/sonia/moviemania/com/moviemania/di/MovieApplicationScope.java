@@ -1,4 +1,4 @@
-package sonia.moviemania.com.moviemania.module;
+package sonia.moviemania.com.moviemania.di;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

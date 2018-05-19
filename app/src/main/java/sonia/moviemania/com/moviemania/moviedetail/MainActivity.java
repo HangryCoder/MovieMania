@@ -1,6 +1,5 @@
-package sonia.moviemania.com.moviemania;
+package sonia.moviemania.com.moviemania.moviedetail;
 
-import android.app.ProgressDialog;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +17,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import sonia.moviemania.com.moviemania.R;
 import sonia.moviemania.com.moviemania.data.Movie;
 import sonia.moviemania.com.moviemania.data.MovieRespository;
 import sonia.moviemania.com.moviemania.utils.Utils;

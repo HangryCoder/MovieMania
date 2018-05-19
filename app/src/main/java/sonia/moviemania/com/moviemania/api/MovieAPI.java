@@ -1,4 +1,4 @@
-package sonia.moviemania.com.moviemania.network;
+package sonia.moviemania.com.moviemania.api;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;

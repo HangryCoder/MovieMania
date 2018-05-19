@@ -1,4 +1,4 @@
-package sonia.moviemania.com.moviemania;
+package sonia.moviemania.com.moviemania.moviedetail;
 
 import sonia.moviemania.com.moviemania.data.Movie;
 

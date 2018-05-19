@@ -1,9 +1,10 @@
-package sonia.moviemania.com.moviemania.module;
+package sonia.moviemania.com.moviemania.di;
 
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
+import sonia.moviemania.com.moviemania.di.MovieApplicationScope;
 
 @Module
 public class OkHttpClientModule {

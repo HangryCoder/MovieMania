@@ -1,12 +1,11 @@
 package sonia.moviemania.com.moviemania.data;
 
-import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
-import sonia.moviemania.com.moviemania.component.DaggerMovieComponent;
-import sonia.moviemania.com.moviemania.component.MovieComponent;
-import sonia.moviemania.com.moviemania.network.RestClient;
+import sonia.moviemania.com.moviemania.di.DaggerMovieComponent;
+import sonia.moviemania.com.moviemania.di.MovieComponent;
+import sonia.moviemania.com.moviemania.di.MovieModule;
 import sonia.moviemania.com.moviemania.utils.Utils;
 
 /**
@@ -19,23 +18,15 @@ public class MovieRespository implements MovieDataSource {
 
     @Override
     public void getMovieData(final OnFinishedListener onFinishedListener) {
-       /* getMovieObservable()
-                .subscribeWith(getObserver(onFinishedListener));*/
 
         MovieComponent movieComponent = DaggerMovieComponent.builder()
+                .movieModule(new MovieModule())
                 .build();
 
-        DisposableObserver<Movie> disposableObserver =
-                movieComponent.getMovieModule().fetchMovieDetails()
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(getObserver(onFinishedListener));
-    }
-
-    private Observable<Movie> getMovieObservable() {
-        return RestClient.getMovieAPI().fetchMovieDetails()
+        movieComponent.getMovieModule().fetchMovieDetails()
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(getObserver(onFinishedListener));
     }
 
     private DisposableObserver<Movie> getObserver(final OnFinishedListener onFinishedListener) {
